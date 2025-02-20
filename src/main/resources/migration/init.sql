@@ -28,5 +28,19 @@ CREATE TABLE IF NOT EXISTS place_type (
     name VARCHAR(255) NOT NULL
 );
 
+--
+CREATE TABLE IF NOT EXISTS Plant (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    plant_type_id BIGINT REFERENCES plant_type(id),
+    height FLOAT NOT NULL,
+    diameter FLOAT NOT NULL,
+    winter_hardiness_type_id BIGINT REFERENCES winter_hardiness_type(id),
+    place_type_id BIGINT REFERENCES place_type(id),
+    ground_type_id BIGINT REFERENCES ground_type(id),
+    peculiarities VARCHAR(4095) NOT NULL
+);
+
+
 
 --INSERT INTO event_type (name) VALUES ('Обработка фунгицидом');
