@@ -39,6 +39,7 @@ public class PlantController {
     @PutMapping("/{id}")
     @Operation(summary = "Update a plant")
     public Plant updatePlant(@PathVariable Long id, @RequestBody Plant plantDetails) {
+        plantService.getPlantById(id).orElseThrow(() -> new ElementNotFoundException(id));
         return plantService.updatePlant(id, plantDetails);
     }
 
